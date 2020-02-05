@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Lista Pinterest</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style type="text/css">
+		html,body{
+			margin: 0;
+			padding: 0;
+		}
+		.content-header{
+			height: 50px;
+			background: #fff;
+			color: #666;
+			border-bottom: 1px solid #666;
+			position: fixed;
+			top: 0px;
+			left: 0px;
+			padding: 0px 10px;
+			width: calc(100% - 20px);
+			display: flex;
+		}
+		.place-logo{
+			width: 40px;
+		}
+		.img-logo{
+			padding-top: 5px;
+			width: 100%;
+		}
+		.place-search{
+			margin: 10px;
+			width: calc(100% - 70px);
+			border-radius: 10px;
+			padding: 5px 10px;
+			background: #ddd;
+			display: flex;
+		}
+		.button-search{
+			color: #666;
+			font-size: 20px;
+			width: 30px;
+		}
+		.content-input{
+			width: calc(100% - 30px);
+		}
+		.input-class{
+			background: transparent;
+			border-style: none;
+			font-size: 17px;
+			color: #666;
+  			outline: none;
+  			width: calc(100%);
+		}
+		.input-class:focus {
+		  	border-width: 0px;
+		}		
+		.content-body{
+			padding: 10px;
+			max-width: 1180px;
+			margin: auto;
+			display: flex;
+			margin-top: 50px;
+			height: calc(100vh - 70px);
+		}
+		.content-column{
+			width: calc(100% / 3);
+
+		}
+		.content-result{
+			padding: 5px;
+			width: calc(100% - 10px);
+		}
+		.img-result{
+			width: 100%;
+			border-radius: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="content-header">
+		<div class="place-logo">
+			<img src="img/logo.png" class="img-logo">
+		</div>
+		<div class="place-search">
+			<div class="button-search"><i class="fa fa-search" aria-hidden="true"></i></div>
+			<div class="content-input">
+				<input type="text" id="textsearch" class="input-class">
+			</div>
+		</div>
+	</div>
+	<div class="content-body">
+		<div class="content-column" id="content1">
+			<!--ESTO NOS SERVIRA COMO PRUEBA PARA CARGAR LAS IMAGENES DESDE UNA CONSULTA EXTERNA
+			<div class="content-result">
+				<img src="img/img1.jpg" title="Imagen 1" class="img-result">
+			</div>
+			-->
+		</div>
+		<div class="content-column" id="content2">
+		</div>		
+		<div class="content-column" id="content3">
+		</div>
+	</div>
+	<script type="text/javascript">
+		var array_img=[
+			{imgname:"Imagen 1",path:"img/img1.jpg"}
+			,{imgname:"Imagen 2",path:"img/img2.jpg"}
+			,{imgname:"Imagen 3",path:"img/img3.jpg"}
+			,{imgname:"Imagen 4",path:"img/img4.jpg"}
+			,{imgname:"Imagen 5",path:"img/img5.jpg"}
+			,{imgname:"Imagen 6",path:"img/img6.jpg"}
+			,{imgname:"Imagen 7",path:"img/img7.jpg"}
+			,{imgname:"Imagen 8",path:"img/img8.jpg"}
+		];
+		(function() {
+			console.log(array_img);
+			var html1='';
+			var html2='';
+			var html3='';
+			for (var i = 0; i < array_img.length; i++) {
+				switch(i%3) {
+					case 0: html1+=
+					'<div class="content-result">'+
+						'<img src="'+array_img[i].path+'" title="'+array_img[i].imgname+'" class="img-result">'+
+					'</div>';
+					break;
+					case 1: html2+=
+					'<div class="content-result">'+
+						'<img src="'+array_img[i].path+'" title="'+array_img[i].imgname+'" class="img-result">'+
+					'</div>';
+					break;
+					case 2: html3+=
+					'<div class="content-result">'+
+						'<img src="'+array_img[i].path+'" title="'+array_img[i].imgname+'" class="img-result">'+
+					'</div>';
+					break;
+				}
+			}
+			document.getElementById("content1").innerHTML=html1;
+			document.getElementById("content2").innerHTML=html2;
+			document.getElementById("content3").innerHTML=html3;
+		})();
+	</script>
+</body>
+</html>
